@@ -1,0 +1,4 @@
+ |  | http-nio-8099-exec-3 |  | 2023-07-19 21:35:49,794 | WARN  | com.alibaba.csp.pts.demo.TestLogController | testEcho needed to warn - 0011965184 
+ |  | http-nio-8099-exec-3 |  | 2023-07-19 21:35:49,804 | ERROR | com.alibaba.csp.pts.demo.TestLogController | testEcho encountered an error with value - 0011965184 
+ |  | http-nio-8099-exec-4 |  | 2023-07-19 21:35:51,937 | WARN  | com.alibaba.csp.pts.demo.TestLogController | testEcho needed to warn - 7330081374 
+ |  | http-nio-8099-exec-4 |  | 2023-07-19 21:35:51,937 | ERROR | com.alibaba.csp.pts.demo.TestLogController | testEcho encountered an error with value - 7330081374 

@@ -1,0 +1,40 @@
+ |  | http-nio-8099-exec-1 |  | 2023-06-28 11:43:35,026 | INFO  | org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] | Initializing Spring FrameworkServlet 'dispatcherServlet' 
+ |  | http-nio-8099-exec-1 |  | 2023-06-28 11:43:35,043 | INFO  | org.springframework.web.servlet.DispatcherServlet | FrameworkServlet 'dispatcherServlet': initialization started 
+ |  | http-nio-8099-exec-1 |  | 2023-06-28 11:43:35,105 | INFO  | org.springframework.web.servlet.DispatcherServlet | FrameworkServlet 'dispatcherServlet': initialization completed in 60 ms 
+ |  | http-nio-8099-exec-1 |  | 2023-06-28 11:43:35,180 | INFO  | com.alibaba.csp.pts.demo.TestLogController | testEcho took input - 4373019649 
+ |  | http-nio-8099-exec-1 |  | 2023-06-28 11:43:35,182 | WARN  | com.alibaba.csp.pts.demo.TestLogController | testEcho needed to warn - 4373019649 
+ |  | http-nio-8099-exec-1 |  | 2023-06-28 11:43:35,198 | ERROR | com.alibaba.csp.pts.demo.TestLogController | testEcho encountered an error with value - 4373019649 
+ |  | http-nio-8099-exec-2 |  | 2023-06-28 11:43:47,009 | INFO  | com.alibaba.csp.pts.demo.TestLogController | testEcho took input - 1150751420 
+ |  | http-nio-8099-exec-2 |  | 2023-06-28 11:43:47,012 | WARN  | com.alibaba.csp.pts.demo.TestLogController | testEcho needed to warn - 1150751420 
+ |  | http-nio-8099-exec-2 |  | 2023-06-28 11:43:47,013 | ERROR | com.alibaba.csp.pts.demo.TestLogController | testEcho encountered an error with value - 1150751420 
+ |  | http-nio-8099-exec-3 |  | 2023-06-28 11:43:51,652 | INFO  | com.alibaba.csp.pts.demo.TestLogController | testEcho took input - 4549386011 
+ |  | http-nio-8099-exec-3 |  | 2023-06-28 11:43:51,654 | WARN  | com.alibaba.csp.pts.demo.TestLogController | testEcho needed to warn - 4549386011 
+ |  | http-nio-8099-exec-3 |  | 2023-06-28 11:43:51,654 | ERROR | com.alibaba.csp.pts.demo.TestLogController | testEcho encountered an error with value - 4549386011 
+ |  | http-nio-8099-exec-1 |  | 2023-06-28 11:52:17,171 | INFO  | org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] | Initializing Spring FrameworkServlet 'dispatcherServlet' 
+ |  | http-nio-8099-exec-1 |  | 2023-06-28 11:52:17,179 | INFO  | org.springframework.web.servlet.DispatcherServlet | FrameworkServlet 'dispatcherServlet': initialization started 
+ |  | http-nio-8099-exec-1 |  | 2023-06-28 11:52:17,240 | INFO  | org.springframework.web.servlet.DispatcherServlet | FrameworkServlet 'dispatcherServlet': initialization completed in 61 ms 
+ |  | http-nio-8099-exec-1 |  | 2023-06-28 11:52:17,305 | INFO  | com.alibaba.csp.pts.demo.TestLogController | testEcho took input - 5914710989 
+ |  | http-nio-8099-exec-1 |  | 2023-06-28 11:52:17,307 | WARN  | com.alibaba.csp.pts.demo.TestLogController | testEcho needed to warn - 5914710989 
+ |  | http-nio-8099-exec-1 |  | 2023-06-28 11:52:17,308 | ERROR | com.alibaba.csp.pts.demo.TestLogController | testEcho encountered an error with value - 5914710989 
+ |  | http-nio-8099-exec-2 |  | 2023-06-28 11:52:19,359 | INFO  | com.alibaba.csp.pts.demo.TestLogController | testEcho took input - 7334649178 
+ |  | http-nio-8099-exec-2 |  | 2023-06-28 11:52:19,366 | WARN  | com.alibaba.csp.pts.demo.TestLogController | testEcho needed to warn - 7334649178 
+ |  | http-nio-8099-exec-2 |  | 2023-06-28 11:52:19,366 | ERROR | com.alibaba.csp.pts.demo.TestLogController | testEcho encountered an error with value - 7334649178 
+ |  | http-nio-8099-exec-1 |  | 2023-06-28 17:57:36,930 | INFO  | org.springframework.web.servlet.DispatcherServlet | FrameworkServlet 'dispatcherServlet': initialization started 
+ |  | http-nio-8099-exec-1 |  | 2023-06-28 17:57:36,994 | INFO  | org.springframework.web.servlet.DispatcherServlet | FrameworkServlet 'dispatcherServlet': initialization completed in 58 ms 
+ |  | http-nio-8099-exec-1 |  | 2023-06-28 17:57:37,085 | INFO  | com.alibaba.csp.pts.demo.TestLogController | testEcho took input - 2567804168 
+ |  | http-nio-8099-exec-1 |  | 2023-06-28 17:57:37,087 | WARN  | com.alibaba.csp.pts.demo.TestLogController | testEcho needed to warn - 2567804168 
+ |  | http-nio-8099-exec-1 |  | 2023-06-28 17:57:37,088 | ERROR | com.alibaba.csp.pts.demo.TestLogController | testEcho encountered an error with value - 2567804168 
+ |  | http-nio-8099-exec-4 |  | 2023-06-28 17:57:41,813 | INFO  | com.alibaba.csp.pts.demo.TestLogController | testEcho took input - 2024264829 
+ |  | http-nio-8099-exec-4 |  | 2023-06-28 17:57:41,817 | WARN  | com.alibaba.csp.pts.demo.TestLogController | testEcho needed to warn - 2024264829 
+ |  | http-nio-8099-exec-4 |  | 2023-06-28 17:57:41,818 | ERROR | com.alibaba.csp.pts.demo.TestLogController | testEcho encountered an error with value - 2024264829 
+ |  | http-nio-8099-exec-1 |  | 2023-06-28 18:00:30,820 | INFO  | org.springframework.web.servlet.DispatcherServlet | FrameworkServlet 'dispatcherServlet': initialization started 
+ |  | http-nio-8099-exec-1 |  | 2023-06-28 18:00:30,895 | INFO  | org.springframework.web.servlet.DispatcherServlet | FrameworkServlet 'dispatcherServlet': initialization completed in 71 ms 
+ |  | http-nio-8099-exec-1 |  | 2023-06-28 18:00:30,975 | INFO  | com.alibaba.csp.pts.demo.TestLogController | testEcho took input - 4277254656 
+ |  | http-nio-8099-exec-1 |  | 2023-06-28 18:00:30,977 | WARN  | com.alibaba.csp.pts.demo.TestLogController | testEcho needed to warn - 4277254656 
+ |  | http-nio-8099-exec-1 |  | 2023-06-28 18:00:30,977 | ERROR | com.alibaba.csp.pts.demo.TestLogController | testEcho encountered an error with value - 4277254656 
+ |  | http-nio-8099-exec-2 |  | 2023-06-28 18:00:32,547 | INFO  | com.alibaba.csp.pts.demo.TestLogController | testEcho took input - 3443354418 
+ |  | http-nio-8099-exec-2 |  | 2023-06-28 18:00:32,549 | WARN  | com.alibaba.csp.pts.demo.TestLogController | testEcho needed to warn - 3443354418 
+ |  | http-nio-8099-exec-2 |  | 2023-06-28 18:00:32,550 | ERROR | com.alibaba.csp.pts.demo.TestLogController | testEcho encountered an error with value - 3443354418 
+ |  | http-nio-8099-exec-3 |  | 2023-06-28 18:00:34,251 | INFO  | com.alibaba.csp.pts.demo.TestLogController | testEcho took input - 4108701570 
+ |  | http-nio-8099-exec-3 |  | 2023-06-28 18:00:34,253 | WARN  | com.alibaba.csp.pts.demo.TestLogController | testEcho needed to warn - 4108701570 
+ |  | http-nio-8099-exec-3 |  | 2023-06-28 18:00:34,253 | ERROR | com.alibaba.csp.pts.demo.TestLogController | testEcho encountered an error with value - 4108701570 
