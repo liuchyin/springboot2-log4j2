@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <properties>
+        <property name="LOG_HOME">./service-logs</property>
+    </properties>
+    <Appenders>
+        <Console name="consoleAppender" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger{36}.%M - %msg%n"/>
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="org.springframework" level="info" additivity="false">
+            <AppenderRef ref="consoleAppender"/>
+        </Logger>
+        <!-- 根日志设置 -->
+        <Root level="debug">
+            <AppenderRef ref="consoleAppender" level="debug"/>
+        </Root>
+    </Loggers>
+
+</Configuration>

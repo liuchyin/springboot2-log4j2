@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <properties>
+        <property name="LOG_PATTERN" value="%date{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n" />
+<!--        <property name="LOG_HOME">/Users/duyuanyuan/workspace/amazon-holo/amazon-holo-test/springboot2-log4j2/src/main/resources/service-logs</property>-->
+                <property name="LOG_HOME" value="./log"/>
+    </properties>
+    <Appenders>
+
+        <Console name="Console" target="SYSTEM_OUT">
+            <!-- 控制台只输出level及以上级别的信息(onMatch),其他的直接拒绝(onMismatch) -->
+            <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+            <!-- 输出日志的格式 -->
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n"/>
+        </Console>
+
+        <File name="Filelog" fileName="${LOG_HOME}/test.log" append="true">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </File>
+
+        <RollingFile name="DailyRollingFile" fileName="${LOG_HOME}/service.log" filePattern="${LOG_HOME}/service%d{yyyy-MM-dd HH-mm}.log" append="true" immediateFlush="true">
+            <PatternLayout pattern="[%d][%t][%p][%c:%L] %m%n" />
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+                <SizeBasedTriggeringPolicy size="1KB" />
+            </Policies>
+        </RollingFile>
+
+        <!--<RollingRandomAccessFile name="randomAccessLog" fileName="${LOG_HOME}/serviceRandomAccess.log" immediateFlush="false"
+                                 filePattern="${LOG_HOME}/serviceRandomAccess%d{yyyy-MM-dd HH-mm}.log"
+                                 append="false">
+            <PatternLayout pattern="%d{yyyy-MM-dd 'at' HH:mm:ss z} [%t] %-5level %logger{36} %L %M - %msg%xEx%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <SizeBasedTriggeringPolicy size="1KB"/>
+            </Policies>
+        </RollingRandomAccessFile>-->
+
+        <!--<RandomAccessFile name="RandomAccessFile" fileName="${LOG_HOME}/test.log"
+                          immediateFlush="false" append="false">
+            <PatternLayout>
+                <Pattern>%d %p %class{1.} [%t] %location %m %ex%n</Pattern>
+            </PatternLayout>
+        </RandomAccessFile>-->
+    </Appenders>
+
+    <Loggers>
+        <!--<AsyncLogger name="com.foo.Bar" level="trace" includeLocation="true">
+            <AppenderRef ref="RandomAccessFile"/>
+        </AsyncLogger>-->
+
+        <!-- 根日志设置 -->
+        <Root level="info" additivity="true">
+            <AppenderRef ref="Console" />
+            <!--<AppenderRef ref="RandomAccessFile"/>-->
+            <!--<AppenderRef ref="randomAccessLog"/>-->
+            <AppenderRef ref="DailyRollingFile"/>
+            <AppenderRef ref="Filelog"/>
+        </Root>
+    </Loggers>
+
+</Configuration>
+

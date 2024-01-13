@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--日志级别以及优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
+<!--status="WARN" :用于设置log4j2自身内部日志的信息输出级别，默认是OFF-->
+<!--monitorInterval="30"  :间隔秒数,自动检测配置文件的变更和重新配置本身-->
+<configuration status="WARN" monitorInterval="60" strict="true">
+    <properties>
+        <!--自定义一些常量，之后使用${变量名}引用-->
+        <property name="logpath">./logs</property>
+        <property name="charset">UTF-8</property>
+        <!--自定义的输出格式-->
+        <property name="pattern">%X{ip}|%X{EagleEye-TraceID}|%t|%X{serverName}|%d{yyyy-MM-dd HH:mm:ss,SSS}|%p|%c|%m%n</property>
+        <!-- 外部请求常量 -->
+        <property name="externalLogpath">./external/logs</property>
+    </properties>
+    <!--appenders:定义输出内容,输出格式,输出方式,日志保存策略等,常用其下三种标签[console,File,RollingFile]-->
+    <!--Appender可以理解为日志的输出目的地-->
+    <appenders>
+        <!--console :控制台输出的配置-->
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${pattern}" charset="${charset}"/>
+        </Console>
+        <!--RollingRandomAccessFile性能比RollingFile提升官网宣称是20-200%-->
+        <RollingRandomAccessFile name="AMWAY.FATAL" immediateFlush="true" bufferSize="1024"
+                                 fileName="${logpath}/fatal.log"
+                                 filePattern="${logpath}/fatal.%d{yyyy-MM-dd}-%i.gz"
+                                 ignoreExceptions="false">
+            <PatternLayout pattern="${pattern}" charset="${charset}"/>
+            <Filters>
+                <ThresholdFilter level="FATAL" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+                <SizeBasedTriggeringPolicy size="500MB" />
+            </Policies>
+            <DefaultRolloverStrategy>
+                <Delete basePath="${logpath}" maxDepth="2" followLinks="true">
+                    <IfFileName glob="fatal.*.gz"/>
+                    <IfLastModified age="7d"/>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingRandomAccessFile>
+        <RollingRandomAccessFile name="AMWAY.ERROR" immediateFlush="true" bufferSize="4096"
+                                 fileName="${logpath}/error.log"
+                                 filePattern="${logpath}/error.%d{yyyy-MM-dd}.gz"
+                                 ignoreExceptions="false">
+            <PatternLayout pattern="${pattern}" charset="${charset}"/>
+            <Filters>
+                <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+                <SizeBasedTriggeringPolicy size="500MB" />
+            </Policies>
+            <DefaultRolloverStrategy>
+                <Delete basePath="${logpath}" maxDepth="2" followLinks="true">
+                    <IfFileName glob="error.*.gz"/>
+                    <IfLastModified age="7d"/>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingRandomAccessFile>
+        <RollingRandomAccessFile name="AMWAY.WARN" immediateFlush="false" bufferSize="4096"
+                                 fileName="${logpath}/warn.log"
+                                 filePattern="${logpath}/warn.%d{yyyy-MM-dd}-%i.gz"
+                                 ignoreExceptions="false">
+            <PatternLayout pattern="${pattern}" charset="${charset}"/>
+            <Filters>
+                <!--ThresholdFilter :日志输出过滤-->
+                <!--level="info" :日志级别,onMatch="ACCEPT" :级别在info之上则接受,onMismatch="DENY" :级别在info之下则拒绝-->
+                <!--与logger、root中定义的日志级别相配合，相当于两个闸门，先判断logger、root的级别，符合了才会用到该filter中的level，此时再进行一次筛选-->
+                <!--                <ThresholdFilter level="TRACE" onMatch="ACCEPT" onMismatch="DENY"/>-->
+                <!--<ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>-->
+                <!--<ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>-->
+                <ThresholdFilter level="WARN" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+                <SizeBasedTriggeringPolicy size="500MB" />
+            </Policies>
+            <DefaultRolloverStrategy>
+                <Delete basePath="${logpath}" maxDepth="2" followLinks="true">
+                    <IfFileName glob="warn.*.gz"/>
+                    <IfLastModified age="7d"/>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingRandomAccessFile>
+        <RollingRandomAccessFile name="AMWAY.INFO" immediateFlush="true"
+                                 fileName="${logpath}/info.log"
+                                 filePattern="${logpath}/info.%d{yyyy-MM-dd}-%i.gz"
+                                 ignoreExceptions="false">
+            <PatternLayout pattern="${pattern}" charset="${charset}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+                <SizeBasedTriggeringPolicy size="500MB" />
+            </Policies>
+            <DefaultRolloverStrategy>
+                <Delete basePath="${logpath}" maxDepth="2" followLinks="true">
+                    <IfFileName glob="info.*.gz"/>
+                    <IfLastModified age="7d"/>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingRandomAccessFile>
+        <RollingRandomAccessFile name="AMWAY.TRACE" immediateFlush="true" bufferSize="4096"
+                                 fileName="${logpath}/trace.log"
+                                 filePattern="${logpath}/trace.%d{yyyy-MM-dd}-%i.gz">
+            <PatternLayout pattern="${pattern}" charset="${charset}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+                <SizeBasedTriggeringPolicy size="500MB" />
+            </Policies>
+            <DefaultRolloverStrategy>
+                <Delete basePath="${logpath}" maxDepth="2" followLinks="true">
+                    <IfFileName glob="trace.*.gz"/>
+                    <IfLastModified age="7d"/>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingRandomAccessFile>
+
+        <!-- 增加第三方调用单独日志 -->
+        <RollingRandomAccessFile name="EXTERNAL.INFO" immediateFlush="true" bufferSize="4096"
+                                 fileName="${externalLogpath}/info.log"
+                                 filePattern="${externalLogpath}/info.%d{yyyy-MM-dd}-%i.gz">
+            <PatternLayout pattern="${pattern}" charset="${charset}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+                <SizeBasedTriggeringPolicy size="500MB" />
+            </Policies>
+            <DefaultRolloverStrategy>
+                <Delete basePath="${externalLogpath}" maxDepth="2">
+                    <IfFileName glob="info.*.gz"/>
+                    <IfLastModified age="7d"/>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingRandomAccessFile>
+    </appenders>
+
+    <!--然后定义logger，只有定义了logger并引入的appender，appender才会生效-->
+    <loggers>
+        <!--additivity="false"表示在该logger中输出的日志不会再延伸到父层logger。这里如果改为true，则会延伸到Root Logger，遵循Root Logger的配置也输出一次。-->
+        <Logger additivity="false" name="AMWAY.TRACE" level="TRACE">
+            <AppenderRef ref="AMWAY.TRACE"/>
+        </Logger>
+        <!--        <Logger additivity="false" name="YZY.BIZ" level="INFO">-->
+        <!--            <AppenderRef ref="AMWAY.BIZ"/>-->
+        <!--        </Logger>-->
+        <!--Logger节点用来单独指定日志的形式，name为包路径,比如要为org.apache包下所有日志指定为INFO级别等。 -->
+        <!--        <Logger additivity="false" name="org.springframework" level="INFO">-->
+        <!--            <AppenderRef ref="console"/>-->
+        <!--        </Logger>-->
+        <!-- 在开发和测试环境启用,输出sql -->
+        <Logger additivity="true" name="com.AMWAY.mapper" level="INFO">
+        </Logger>
+
+        <logger name="com.amway.commerce.member.client.CompClient" level="INFO" additivity="false">
+            <!--指定类的日志级别，会影响指定类日志发出信息的成功与否-->
+            <appender-ref ref="EXTERNAL.INFO" />
+        </logger>
+
+        <!-- Root节点用来指定项目的根日志，如果没有单独指定Logger，那么就会默认使用该Root日志输出 -->
+        <Root level="INFO" includeLocation="true">
+            <AppenderRef ref="console"/>
+            <AppenderRef ref="AMWAY.ERROR"/>
+            <!--<AppenderRef ref="AMWAY.FATAL"/>
+            <AppenderRef ref="AMWAY.TRACE"/>
+            <AppenderRef ref="AMWAY.INFO"/>
+            <AppenderRef ref="AMWAY.WARN"/>-->
+        </Root>
+    </loggers>
+
+</configuration>
